@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>loopQuiz</title>
+    </head>
+    <body>
+        <p>for문을 사용하여 arr1, arr2, arr3, arr4 각각의 배열을 아래와 같이 만드시오</p><br>
+        <div id="q1"></div>
+        <div id="q2"></div>
+        <div id="q3"></div>
+        <div id="q4"></div>
+    </body>
+    <script>
+        let arr1=[];
+        let arr2=[];
+        let arr3=[];
+        let arr4=[];
+
+        for(let i = 0; i < 10; i++ ){
+            arr1[i] = i+2
+        }
+
+        for(let i = 0; i <= 10; i++ ){
+            arr2[i] = i*2
+        }
+
+        for(let i = 0; i < 7; i++ ){
+            arr3[i] = `"abc${i+1}"`
+        }
+
+        for(let i = 0; i < 9; i++ ){
+            arr4[i] = 1 + (i*3);
+        }
+
+        document.getElementById('q1').innerText = `arr1 [${arr1}]`;
+        document.getElementById('q2').innerText = `arr2 [${arr2}]`;
+        document.getElementById('q3').innerText = `arr3 [${arr3}]`;
+        document.getElementById('q4').innerText = `arr4 [${arr4}]`;
+    </script>
+</html>

@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>별찍기</title>
+    </head>
+    <body>
+        <p>별 출력</p>
+        <div id="q1">
+            <p>Q1</p>
+        </div><br/>
+        <div id="q2">
+            <p>Q2</p>
+        </div><br/>
+        <div id="q3">
+            <p>Q3</p>
+        </div>
+        <div id="q4">
+            <p>Q4</p>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        // 포문(내에서 repeat 함수 사용)or 이중포문 사용
+        for(let i = 1; i <= 15; i+=2){
+            $("#q1").append(`<span>${'*'.repeat(i)}</span><br/>`)
+        }
+        for(let i = 1; i <= 15; i+=2){
+            for(let j = 0; j < i; j++){
+                $("#q1").append('*');
+            }
+            $("#q1").append('<br/>');
+        }
+
+        for(let i = 15; i >= 1; i-=2){
+            $("#q2").append(`<span>${'*'.repeat(i)}</span><br/>`)
+        }
+
+        for(let i = 1; i <= 100; i+= i ){
+            $("#q3").append(`<span>${'*'.repeat(i)}</span><br/>`)
+        }
+
+        let maxRow = 10;
+        let temp = 0;
+
+        for(let i = 1; i <= maxRow; i++ ){
+            $("#q4").append(`<span>${'⭐'.repeat(maxRow - i)}</span>`)
+            $("#q4").append(`<span>${'✅'.repeat(i+temp)}</span><br/>`)
+            temp = i
+        }
+    </script>
+</html>

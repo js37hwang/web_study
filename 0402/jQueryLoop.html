@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>jQuery Loop</title>
+    </head>
+    <body>
+        <div id="btnArea"></div>
+        <div id="btnArea2"></div>
+    </body>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        let btnAreaTxt = ''
+
+        for(let i = 0; i < 100; i++){
+            btnAreaTxt +=`<input type="button" value="${i+1}">`;
+
+            if((i+1)%10 === 0){
+                btnAreaTxt += '<br/>'
+            }
+        }
+        
+        $("#btnArea").html(btnAreaTxt); // .html 써도 되는데 걍 .append 쓰는게 더 간단한 로직 가능
+        
+        
+        for(let i = 0; i < 100; i++){
+            $("#btnArea2").append(`<input type="button" value="${i+1}">`);
+
+            if((i+1)%10 === 0){
+                $("#btnArea2").append('<br/>');
+            }
+        }
+        
+        // 이벤트 위임 -> 이벤트 버블링을 이용한 방식
+        $("#btnArea2").click(function(e){
+            if(e.target.localName === 'input' && e.target.type === 'button'){
+                alert(`버튼 ${e.target.value} 클릭!`)
+            }
+        });
+    </script>
+</html>

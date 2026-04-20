@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>MAIN</title>
+    </head>
+    <body>
+        <div id="upArea" style="width: 100%; height: 20px"></div>
+        <input id="appendText" type="input">
+        <input id="upBtn" type="button" value="앞">
+        <input id="downBtn" type="button" value="뒤">
+        <div id="downArea" style="width: 100%; height: 20px"></div>
+    </body>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        console.log($("#appendText").val());
+
+        document.getElementById('upBtn').addEventListener('click', function(){
+            document.getElementById('upArea').innerHTML = document.getElementById('appendText').value
+        })
+
+        $("#upBtn").click(function(){
+            $("#upArea").html($('#appendText').val())
+        })
+
+        document.getElementById('downBtn').addEventListener('click', function(){
+            document.getElementById('downArea').innerHTML = document.getElementById('appendText').value
+        })
+
+        $("#downBtn").click(function(){
+            $("#downArea").html($('#appendText').val())
+        })
+    </script>
+</html>

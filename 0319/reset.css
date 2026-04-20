@@ -1,0 +1,71 @@
+/* 1. 모든 요소 초기화 */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. body 기본 글꼴/라인 높이 설정 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+    background-color: #fff; /* 필요에 따라 변경 */
+    color: #000;
+}
+
+/* 3. 이미지/비디오/오디오 기본 스타일 제거 */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* 4. form 요소 기본 스타일 제거 */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+/* 5. 버튼 커서 */
+button {
+    cursor: pointer;
+}
+
+/* 6. 리스트 스타일 제거 */
+ul,
+ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* 7. 링크 기본 색상 제거 */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 8. table 기본 스타일 제거 */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* 9. 기타 브라우저 기본 스타일 제거 */
+hr {
+    border: none;
+    height: 1px;
+    background: #ccc;
+}

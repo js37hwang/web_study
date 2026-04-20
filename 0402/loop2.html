@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>loop-arr</title>
+    </head>
+    <body>
+        <div id="loopArea"></div>
+    </body>
+    <script>
+        let replay=[];
+        let repeatNum = 10;
+
+        for(let i = 0; i < repeatNum; i++ ){
+            replay[i] = i+1
+        }
+
+        document.getElementById('loopArea').innerText = replay;
+
+        console.log(replay)
+    </script>
+</html>

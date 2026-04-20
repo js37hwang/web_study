@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="reset.css">
+    </head>
+    <body>
+        <form 
+            id="loginForm" 
+            style="
+                width: 400px;
+                height: 300px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center; 
+                align-items: center;     
+                background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)),
+                url('https://cdn.011st.com/11dims/resize/1000x1000/quality/75/11src/product/7491461950/B.webp?484435280');
+                background-size: cover;
+                background-position: center;
+            "
+            >
+                <div>
+                    <span>아이디</span>
+                    <input id="loginId" type="text" placeholder="아이디를 입력해주세요.">
+                </div>
+                <div>
+                    <span>패스워드</span>
+                    <input id="loginPwd" type="password" placeholder="패스워드를 입력해주세요.">
+                </div>
+                <button type="submit">로그인</button>
+        </form>
+        <ul>
+            <li>sdfg</li>
+            <li>ewrt</li>
+            <li>234234</li>
+        </ul>
+    </body>
+
+    <script>
+        let loginForm = document.getElementById('loginForm');
+        let loginId = document.getElementById('loginId');
+        let loginPwd = document.getElementById('loginPwd');
+
+        loginForm.addEventListener('submit', function(e){
+            e.preventDefault();
+
+            if(!loginId.value || !loginPwd.value){
+                alert('아이디 또는 패스워드를 입력해주세요.');
+                return;
+            }
+
+            if(loginId.value == 'polytech' && Number(loginPwd.value) == 12341234){
+                console.log('로그인 성공!');
+            }else{
+                console.log('로그인 실패ㅜㅜ');
+            }
+        })
+
+        console.log(1==1);
+        console.log(1=='1');
+        console.log(1===1);
+
+        for (let i = 0; i < 10; i++){
+            console.log(i)
+        }
+    </script>
+</html>

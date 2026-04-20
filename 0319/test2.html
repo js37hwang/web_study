@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>Document</title>
+    </head>
+    <body>
+        <section>
+            <form 
+                id="submitForm" 
+                style="
+                    width: 200px;
+                    display: grid; 
+                    gap: 1rem; 
+                    grid-template-rows: 1fr;
+                    place-items: center;
+                "
+            >
+                <input 
+                    id="fruitsInput" 
+                    type="text" 
+                    placeholder="과일 이름 입력"
+                >
+                ⇩
+                <button type="submit">클릭</button>
+                ⇩
+                <input 
+                    id="fruitsOutput" 
+                    type="text" 
+                    placeholder="과일 이름 출력" 
+                    disabled
+                >
+            </form>
+        </section>
+    </body>
+    <script>
+        let fruitsInput = document.getElementById('fruitsInput');
+        let fruitsOutput = document.getElementById('fruitsOutput');
+        let submitForm = document.getElementById('submitForm');
+        
+
+        submitForm.addEventListener('submit', function(e){
+            e.preventDefault();
+
+            fruitsOutput.value = fruitsInput.value;
+            fruitsInput.value = '';
+        });
+
+        let a;
+        console.log(a);
+
+        // false, 0, undefiend, null이 조건문에 들어가면 무조건 else로 떨어진다
+        if(a){
+            colsole.log("true");
+        }else{
+            console.log("false");
+        }
+    </script>
+</html>
+

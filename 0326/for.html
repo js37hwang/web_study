@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <span id="outputArea"></span>
+    </body>
+    <script>
+        // for(1;2;4){
+        //     3
+        // }
+        // 1 234 234 234가 반복되는 것으로 2가 false가 되면 반복 종료/ break를 만나도 종료
+
+        // for(alert(1); alert(2); alert(4)){
+        //     alert(3)
+        // }
+
+
+        // 이런식으로 작성해도 반복문 잘 돌아감
+        // for(let i = 0; i < 10; ){
+        //     console.log(i)
+        //     i++
+        // }
+
+        for(let i = 30; i;){
+            console.log(i)
+            i = i -2
+        }
+
+        let outputArea = document.getElementById('outputArea')
+        const endNum = 100
+        let numStr = ''
+
+        for(let i = 1; i <= endNum; i++ ){
+            numStr+=i+' ' // 구분을 위해 공백 추가
+
+            if(i % 10 === 0){
+                numStr+='<br/>' // 줄바꿈 태그 추가
+            }
+        }
+
+        outputArea.innerHTML=numStr // innerHTML 함수 아님..! 사용방법 주의
+    </script>
+</html>

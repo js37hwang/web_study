@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <title>이중배열 Quiz</title>
+    </head>
+    <body>
+        <div id="area1"></div>
+        <div id="area2"></div>
+        <div id="area3"></div>
+        <div id="area4"></div>
+    </body>
+    <script>
+        // let arr1 = [];
+        // let arr2 = [];
+        // let arr3 = [];
+        // let arr4 = [];
+        // let maxCntNum = 5;
+
+        // for(let i = 0; i < maxCntNum; i++){
+        //     arr1[i] = [];
+        //     for(let j = 0; j < maxCntNum; j++){
+        //         arr1[i][j] = (i*5)+j+1;
+        //     }
+        //     console.log(arr1[i])
+        //     document.getElementById('area1').innerHTML += `${arr1[i]}<br/>`
+        // }
+        // document.getElementById('area1').innerHTML += `<br/>`
+
+        // for(let i = 0; i < maxCntNum; i++){
+        //     arr2[i] = [];
+        //     for(let j = 0; j < maxCntNum; j++){
+        //         arr2[i][j] = (i* 15) + (j*3) + 1;
+        //     }
+        //     console.log(arr2[i])
+        //     document.getElementById('area2').innerHTML += `${arr2[i]}<br/>`
+        // }
+        // document.getElementById('area2').innerHTML += `<br/>`
+
+        // for(let i = 0; i < maxCntNum; i++){
+        //     arr3[i] = [];
+        //     for(let j = 0; j < maxCntNum; j++){
+        //         arr3[i][j] = i*j;
+        //     }
+        //     console.log(arr3[i])
+        //     document.getElementById('area3').innerHTML += `${arr3[i]}<br/>`
+        // }
+        // document.getElementById('area3').innerHTML += `<br/>`
+
+        // for(let i = 0; i < maxCntNum; i++){
+        //     arr4[i] = [];
+        //     for(let j = 0; j < maxCntNum; j++){
+        //         arr4[i][j] = `${i}${j}` ;
+        //     }
+        //     console.log(arr4[i])
+        //     document.getElementById('area4').innerHTML += `${arr4[i]}<br/>`
+        // }
+
+
+        function makeArray(max, formula, targetId) {
+            let arr = [];
+            let html = '';
+
+            for (let i = 0; i < max; i++) {
+                arr[i] = [];
+
+                for (let j = 0; j < max; j++) {
+                    arr[i][j] = formula(i, j);
+                }
+
+                console.log(arr[i]);
+                html += `${arr[i]}<br/>`;
+            }
+
+            html += `<br/>`;
+            document.getElementById(targetId).innerHTML = html;
+
+            return arr;
+        }
+
+        let maxCntNum = 5;
+
+        let arr1 = makeArray(maxCntNum, (i, j) => (i * 5) + j + 1, 'area1');
+        let arr2 = makeArray(maxCntNum, (i, j) => (i * 15) + (j * 3) + 1, 'area2');
+        let arr3 = makeArray(maxCntNum, (i, j) => i * j, 'area3');
+        let arr4 = makeArray(maxCntNum, (i, j) => `${i}${j}`, 'area4');
+    </script>
+</html>

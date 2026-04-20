@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>구구단</title>
+    </head>
+    <body>
+        <input id="inputDan" type="text" placeholder="원하는 단을 입력해주세요">
+        <input id="inputLine" type="text" placeholder="몇줄까지 계산할까요?">
+        <input id="btn" type="button" value="구구단">
+        <div id="gugudanArea"></div>
+    </body>
+
+    <script>
+        let gugudanArea = document.getElementById('gugudanArea')
+        let inputDan = document.getElementById('inputDan')
+        let inputLine = document.getElementById('inputLine')
+        let inputBtn = document.getElementById('btn')
+
+        // innerHTML에 텍스트 넣어주는 함수
+        function returnInnerHtmlStr(str){
+            gugudanArea.innerHTML = str
+        }
+
+        inputBtn.addEventListener('click', function(){
+            // 규격에 맞지 않는 값부터 걸러냄
+            if(inputDan.value == '' || inputLine.value== ''){
+                returnInnerHtmlStr('모든 값을 입력해주세요.')
+                return;
+            }
+            if(Number(inputDan.value) === 0 || Number(inputLine.value) === 0){
+                returnInnerHtmlStr('0은 입력 불가능 합니다.')
+                return;
+            }
+            if(!!inputDan.value && isNaN(inputDan.value) || inputDan.value && isNaN(inputDan.value) ){ // 이게 더 의도에 맞는 코드임
+                returnInnerHtmlStr('숫자만 입력 가능합니다.')
+                return;
+            }
+
+            // 데이터 선언 및 로직 진행
+            const lineNum = inputLine.value;
+            let resultStr = `${inputDan.value}단을 출력합니다<br/>======================<br/>`
+            
+            for(let i = 1; i <= lineNum; i++){
+                resultStr+=`${inputDan.value}*${i}=${inputDan.value*i}<br/>`
+            }
+
+            returnInnerHtmlStr(resultStr)
+        })
+    </script>
+</html>

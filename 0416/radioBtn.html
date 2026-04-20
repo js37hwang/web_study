@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>라디오 버튼 가중치</title>
+    </head>
+    <body>
+        <div id="radioArea"></div>
+        <div id="calcArea"></div>
+        <div>
+            <input id="calcBtn" type="button" value="계산">
+        </div>
+    </body>
+    <script>
+        let qMaxNum = 3
+        
+        for(let i = 0; i<qMaxNum; i++){
+            document.getElementById('radioArea').innerHTML += `
+                <div>
+                    <p>
+                        <span>${i+1}번</span>
+                        <span>0<input type="radio" name="num${i+1}" value="0"></span>
+                        <span>1<input type="radio" name="num${i+1}" value="1"></span>
+                        <span>2<input type="radio" name="num${i+1}" value="2"></span>
+                        <span>3<input type="radio" name="num${i+1}" value="3"></span>
+                        <span>4<input type="radio" name="num${i+1}" value="4"></span>
+                        <span>가중치<input type="input" id="inputNum${i+1}"></span>
+                    </p>
+                </div>
+            ` 
+        }
+        
+
+
+        function calcNum(radioName, inputId){
+            let arr = document.getElementsByName(radioName)
+            let weight = Number(document.getElementById(inputId).value) // 사용자가 입력한 가중치
+
+            if(Number.isNaN(weight)){
+                alert('가중치에 숫자를 입력해주세요!')
+                return;
+            }
+
+            for(let i = 0; i < arr.length; i++){
+                if(arr[i].checked){
+                    return {
+                            radioNum : arr[i].value,
+                            weight,
+                        }
+                }
+            }
+        }
+
+        document.getElementById("calcBtn").addEventListener('click', function(){
+            let resArr = []
+
+            for(let i = 0; i < qMaxNum; i++){
+                if(Number(document.getElementById(inputId).value))
+
+                resArr[i] = calcNum(`num${i+1}`, `inputNum${i+1}`)
+            }
+
+            document.getElementById('calcArea').innerHTML = `${resObj1.radioNum}x${resObj1.weight}+${resObj2.radioNum}x${resObj2.weight}+${resObj3.radioNum}x${resObj3.weight}=${resObj1.radioNum*resObj1.weight+resObj2.radioNum*resObj2.weight+resObj3.radioNum*resObj3.weight}`
+        })
+    </script>
+</html>

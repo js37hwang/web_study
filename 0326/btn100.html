@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>버튼 백개</title>
+    </head>
+    <body>
+        <div id="innerBtnArea"></div>
+    </body>
+    <script>
+        let innerBtnArea = document.getElementById('innerBtnArea');
+        let resultHtml = ''
+        const btnNum = 100;
+
+        for(let i = 1; i <= btnNum; i++){    
+            if(i%3 === 0){
+                resultHtml+= `<input type="button" value="${i}" style="background-color: darksalmon">`
+            }else{
+                resultHtml+= "<input type='button' value='" + i + "' >"
+            
+            }
+            if(i % 10 === 0){
+                resultHtml+='<br/>'
+            }
+        }
+
+        innerBtnArea.innerHTML = resultHtml
+
+
+        // 이벤트 위임 -> 이벤트 버블링을 이용한 방식
+        innerBtnArea.addEventListener('click', function(e){
+            if(e.target.tagName === 'INPUT' && e.target.type === 'button'){
+                alert(`버튼 ${e.target.value} 클릭!`);
+            }
+        });
+    </script>
+</html>

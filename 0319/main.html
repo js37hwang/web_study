@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Document</title>
+    </head>
+    <body>
+        <p style="font-weight: bold;">HELLO HTML</p>
+        <input id="text2" type="text" placeholder="오늘 저녁 메뉴는?" value="qwer">
+        <input id="btn1" type="button" value="출력">  
+    </body>
+    <script>
+        // let test2 = document.getElementById('text2').value 
+        // -> 이런 식으로 변수에 아예 value를 집어 넣어 버리면 코드 실행 후 사용자 입력값이 바뀌어도 반영x 
+        // const: 상수여서 값 못바꿈
+        let test2 = document.getElementById('text2');
+        let btn1 = document.getElementById('btn1');
+
+        test2.value = '오늘 점심 메뉴는?';
+        btn1.addEventListener('click', function(){
+            alert(test2.value);
+        });
+
+    </script>
+</html>
+

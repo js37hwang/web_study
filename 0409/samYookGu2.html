@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>삼육구</title>
+    </head>
+    <body>
+        <div id="resultArea"></div>
+    </body>
+    <script>
+        // 자스 내장함수 없이 3,6,9가 개수 만큼 짝이 나오게 하라
+        let startNum = 120;
+        let endNum = 150;
+        let resStr = ''
+
+        // 범위에 해당하는 수 string으로 변환하여 임시 리스트에 집어넣기
+        // let tmpList = [];
+        // for(let i =startNum; i <= endNum; i++){
+        //     tmpList.push(`${i}`);
+        // }
+
+        // str으로 변환된 각 값들을 검사하여 '3' '6' '9' 존재 시 짝 출력 로직
+        // for(let i = 0; i < tmpList.length; i++ ){
+        for(let i = startNum; i <= endNum; i++){ 
+            // 걍 리스트 생성할 필요도 없이 해당 포문에서 바로 문자로 변경ㄱ
+            // let flag= true; // 존재 여부 flag
+            let samStr = '';
+            i += '';
+            for(let j = 0; j < i.length; j++ ){
+                // if(tmpList[i][j] === '3' || tmpList[i][j] === '6' || tmpList[i][j] === '9'){
+                //     flag = false;
+                //     samStr += "짝";
+                // }
+                if(i[j] % '3' === 0 && i[j] != 0){
+                    samStr += "짝";
+                }
+            }
+            resStr += samStr === '' ? `${i}\n` : `${samStr}\n`;
+        }
+
+        document.getElementById('resultArea').innerText = resStr;
+
+        // 불필요한 flag 변수 선언했었고, 
+        // 3 6 9 숫자 각각 비교가 아니라 3으로 나머지연산!!하면 훨씬 짧은 코드 생성이 쌉가였음
+
+    </script>
+</html>

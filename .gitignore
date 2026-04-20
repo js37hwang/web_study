@@ -1,0 +1,9 @@
+# VSCode
+.vscode/
+
+# Environment variables
+codeset/.env
+
+# Node.js
+**/node_modules/
+npm-debug.log*

@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Document</title>
+    </head>
+    <body>
+        <span id="prevVal">위위우위위위우</span><br/>
+        <input type="text"  id="inputTxt"><br/>
+        <input type="button" value="앞" id="prevBtn">
+        <input type="button" value="뒤" id="nextBtn"><br/>
+        <span id="nextVal">아래아아래아래</span>
+    </body>
+    <script>
+        let prevBtn = document.getElementById('prevBtn')
+        let nextBtn = document.getElementById('nextBtn')
+        let prevVal = document.getElementById('prevVal')
+        let nextVal = document.getElementById('nextVal')
+        let inputText = document.getElementById('inputTxt')
+
+
+        prevBtn.addEventListener('click', function(){
+            prevVal.innerHTML = inputText.value
+            inputText.value = ''
+        })
+
+        nextBtn.addEventListener('click', function(){
+            nextVal.innerHTML = inputText.value
+            inputText.value = ''
+        })
+    </script>
+</html>
+
