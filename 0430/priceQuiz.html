@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>내가 살 수 있는 아이템</title>
+    </head>
+    <body>
+        <input id="priceInput" type="text" placeholder="내가 물건을 사기 위해 지불할 수 있는 금액의 마지노선"  style="width: 600px;">
+        <button id="checkBtn">구입 확인</button>
+        <p id="itemNameArea"></p>
+    </body>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $('#checkBtn').click(function(){
+            $.ajax({
+                url: `http://localhost/returnItem?price=${$("#priceInput").val()}`,
+                data:{},
+                success: function(res){
+                    console.log(`FE success! : ${JSON.stringify(res.itemName)}`);
+                    $("#itemNameArea").html(res.itemName);
+                }
+            })
+        })
+    </script>
+</html>

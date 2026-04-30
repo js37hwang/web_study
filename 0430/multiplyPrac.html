@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>곱하기 퀴즈</title>
+    </head>
+    <body>
+        <ul>
+            <li>
+                <input type="text" id="num1">
+            </li>
+            <li>
+                <input type="text" id="num2">
+            </li>
+            <li>
+                <input type="text" id="num3">
+            </li>
+            <li>
+                <button id="multiplyBtn">곱하기</button>
+            </li>
+            <li>
+                <p id="resArea"></p>
+            </li>
+        </ul>
+    </body>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $("#multiplyBtn").click(function(){
+            // $.ajax({
+            //     url: `http://localhost/mul3`,
+            //     data: {
+            //         num1 :  $("#num1").val(),
+            //         num2 :  $("#num2").val(),
+            //         num3 :  $("#num3").val(),
+            //     },
+            //     success: function(res){
+            //         console.log(`FE success! : ${JSON.stringify(res.res)}`);
+            //         $("#resArea").html(res.res);
+            //     }
+            // })
+
+            // 교수님이 원한 답
+            $.ajax({
+                url: `http://localhost/mul3?num1=${$("#num1").val()}&num2=${$("#num2").val()}&num3=${$("#num3").val()}`,
+                data:{},
+                success: function(res){
+                    console.log(`FE success! : ${JSON.stringify(res.res)}`);
+                    $("#resArea").html(res.res);
+                }
+            })
+        });
+    </script>
+</html>

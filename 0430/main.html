@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>api prac</title>
+    </head>
+    <body>
+        <ul>
+            <li>
+                <button id="req1Btn">
+                    request1
+                </button>
+            </li>
+            <li>
+                <button id="req2Btn">
+                    request2
+                </button>
+            </li>
+            <li>
+                <button id="req3Btn">
+                    request3
+                </button>
+            </li>
+        </ul>
+    </body>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        function callApi(router, data){
+            $.ajax({
+                url: `http://localhost/${router}`,
+                data: data,
+                success: function(res){
+                    console.log(`ajax: ${JSON.stringify(data)}`);
+                }
+            })
+        }
+
+        $("#req1Btn").click(function(e){
+            callApi('request1', {
+                    name: 'jshwang',
+                    age: 32
+                })
+        });
+        $("#req2Btn").click(function(e){
+            callApi('request2', {
+                name: 'jshwang',
+                height: 170
+            })
+        });
+        $("#req3Btn").click(function(e){
+            callApi('request3', {
+                name: 'jshwang',
+                취미: '코바늘'
+            })
+        });
+    </script>
+</html>

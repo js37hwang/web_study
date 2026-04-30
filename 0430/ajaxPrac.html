@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>ajax</title>
+    </head>
+    <body>
+    </body>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $.ajax({
+            url: 'http://localhost/test',
+            data: {
+                name: 'jshwang',
+                age: 32
+            },
+            success: function(data){
+                console.log(`ajax: ${data}`);
+            }
+        })
+    </script>
+</html>
