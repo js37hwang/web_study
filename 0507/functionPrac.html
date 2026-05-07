@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>함수</title>
+    </head>
+    <body>
+        <input id="stdNum" type="text">
+        <input id="endNum"  type="text">
+        <button id="randomBtn">클릭!</button>
+    </body>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        function randomFunc(startNum, endNum){
+            // Math.floor(Math.random()*10)+1 // 1~10
+            // Math.floor(Math.random()*10)+11 // 11~20
+            startNum = Number(startNum)
+            endNum = Number(endNum)
+
+            console.log(`범위 ${startNum}~${endNum} 내 랜덤 숫자를 생성합니다. ${
+            Math.floor(Math.random() * (endNum - startNum + 1)) + startNum}`)
+        }
+
+        function randomRange10Func(startNum){
+            startNum = Number(startNum)
+
+            console.log(`범위 ${startNum}~${startNum+9} 내 랜덤 숫자를 생성합니다. ${
+            Math.floor(Math.random()*10)+startNum}`)
+            return Math.floor(Math.random()*10)+startNum
+        }
+
+        // let num = console.log("console test!!") // 콘솔 그대로 찍히네!
+
+        // 숫자 5개를 입력 받아 각 숫자마다 그 숫자부터 9가 큰 정수 사이의 숫자를 랜덤으로 발생시킨 뒤 총 합을 구하시오
+
+        $('#randomBtn').click(function(){
+            randomFunc($('#stdNum').val(), $('#endNum').val())
+        })
+    </script>
+</html>

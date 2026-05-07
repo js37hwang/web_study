@@ -12,6 +12,7 @@
         $('#checkBtn').click(function(){
             $.ajax({
                 url: `http://localhost/returnItem?price=${$("#priceInput").val()}`,
+                type:"GET", // 생략 가능- 생략 시 자동 get 방식으로 진행
                 data:{},
                 success: function(res){
                     console.log(`FE success! : ${JSON.stringify(res.itemName)}`);

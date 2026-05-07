@@ -48,25 +48,28 @@ app.get('/checkPrice', function (req, res) {
 app.get('/returnItem', function (req, res) {
     let itemName = '구매 가능한 상품이 존재하지 않습니다.';
     const itemPrice = [
-        {name : 'item1', price : 1000}, 
-        {name : 'item2', price : 5000}, 
-        {name : 'item3', price : 10000}, 
-        {name : 'item4', price : 30000}, 
-        {name : 'item5', price : 50000}, 
-        {name : 'item6', price : 100000}, 
-        {name : 'item7', price : 500000}, 
-        {name : 'item8', price : 800000}, 
-        {name : 'item9', price : 1000000}, 
-        {name : 'item10', price : 3000000}, 
-        {name : 'item11', price : 5000000}, 
+        { name: 'item1',  productName: '볼펜', price: 1000 },
+        { name: 'item2',  productName: '무선 이어폰 케이스', price: 5000 },
+        { name: 'item3',  productName: '보조배터리', price: 10000 },
+        { name: 'item4',  productName: '기계식 키보드', price: 30000 },
+        { name: 'item5',  productName: '27인치 모니터', price: 50000 },
+        { name: 'item6',  productName: '중저가 스마트폰', price: 100000 },
+        { name: 'item7',  productName: '노트북', price: 500000 },
+        { name: 'item8',  productName: '고급형 노트북', price: 800000 },
+        { name: 'item9',  productName: '플래그십 스마트폰', price: 1000000 },
+        { name: 'item10', productName: '중고 경차', price: 3000000 },
+        { name: 'item11', productName: '중고 준중형차', price: 5000000 }
     ]
     const inputPrice = Number(req.query.price)
 
-    for(let i = 0; i < itemPrice.length-1; i++){
+    itemPrice.sort((a, b) => a.price - b.price); // 오름차순 정렬
+
+    for(let i = 0; i < itemPrice.length-1; i++){ 
+        // -> 근데 이건 리스트가 오름차순 정렬이라는 가정일때임..!! 즉, 먼저 정렬해주는 로직이 들어가야 함
 
         if(itemPrice[i].price <= inputPrice &&  
             inputPrice < itemPrice[i+1].price){
-            itemName = itemPrice[i].name
+            itemName = `${itemPrice[i].productName} (${itemPrice[i].name})`
             break;
         }
     }

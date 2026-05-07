@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>함수</title>
+    </head>
+    <body>
+        <input id="num1" type="text">
+        <input id="num2" type="text">
+        <input id="num3" type="text">
+
+        <button id="randomBtn">결과보기</button>
+
+        <div id="resArea"></div>
+    </body>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        const power1 = function(num){
+            console.log(num*num)
+        }
+        console.log(power1(10)) // 함수 안에서 콘솔 찍히고, return이 없으므로 undefined 찍힘
+
+        // 숫자 3개 입력 받아서 가장 큰 수 return하기
+        const getMaxNumber = function(num1, num2, num3){
+            let arr = [num1, num2, num3]
+            return Math.max(...arr)
+        }
+
+        
+
+        $('#randomBtn').click(function(){
+            $('#resArea').html(getMaxNumber($('#num1').val(), $('#num2').val(), $('#num3').val()))  
+        })
+    </script>
+</html>
