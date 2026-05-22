@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>mid4</title>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <span>국어 점수<input id="korScore" type="text" ></span>
+      </li>
+      <li>
+        <span>영어 점수<input id="engScore" type="text" ></span>
+      </li>
+      <li>
+        <span>수학 점수<input id="mathScore" type="text" ></span>
+      </li>
+      <li>
+        <button id="returnRank">등수 출력</button>
+      </li>
+    </ul>
+    <div id="rankArea"></div>
+  </body>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script>
+    $("#returnRank").click(function(e){
+      $.ajax({
+        url: `http://localhost/returnRank`, 
+        data: {
+          kor: $("#korScore").val(),
+          eng: $("#engScore").val(),
+          math: $("#mathScore").val(),
+        },
+        success: function(res){
+          $('#rankArea').append(`${res.numOfPeople}명 중 ${res.rank}등 입니다. <br />`);
+        }
+      })
+    });
+
+  </script>
+</html>

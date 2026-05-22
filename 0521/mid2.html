@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>
+      mid2
+    </title>
+  </head>
+  <body>
+    <div>
+      <button id="appendInputBtn">추가</button>
+      <button id="outputBtn">출력</button>
+    </div>
+    <div id="inputArea"></div>
+    <div id="calcResArea"></div>
+  </body>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script>
+    // 바닐라 자스 쓰면 오히려 더 복잡해짐.. 제이쿼리를 쓰는게 편하다...
+    let cnt = 0;
+
+    $('#appendInputBtn').click(function(){
+      cnt++;
+      $('#inputArea').append(`<input id="mid2_${cnt}" type="text" value="${cnt}"><br/>`)
+    })
+
+    $('#outputBtn').click(function(){
+      if(cnt < 2){
+        $('#calcResArea').html(`최소 2개 이상의 인풋창을 생성해주세요.`)
+        return;
+      }
+
+      let res = Number($(`#mid2_${1}`).val())
+
+      for(let i = 2; i <= cnt; i++){
+        res = res* Number($(`#mid2_${i}`).val())
+      }
+
+      $('#calcResArea').html(`연산 결과는 ${res}입니다.`)
+    })
+
+  </script>
+</html>

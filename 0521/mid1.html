@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <title>mid1</title>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <label style="margin-right: 1.5rem;">1<input type="radio" name="radio1" value="1"></label>
+        <label style="margin-right: 1.5rem;">2<input type="radio" name="radio1" value="2"></label>
+        <label style="margin-right: 1.5rem;">3<input type="radio" name="radio1" value="3"></label>
+        <label style="margin-right: 1.5rem;">4<input type="radio" name="radio1" value="4"></label>
+        <label style="margin-right: 1.5rem;">5<input type="radio" name="radio1" value="5"></label>
+        <label style="margin-right: 1.5rem;">6<input type="radio" name="radio1" value="6"></label>
+        <label style="margin-right: 1.5rem;">7<input type="radio" name="radio1" value="7"></label>
+        <label style="margin-right: 1.5rem;">8<input type="radio" name="radio1" value="8"></label>
+        <label style="margin-right: 1.5rem;">9<input type="radio" name="radio1" value="9"></label>
+        <label style="margin-right: 1.5rem;">10<input type="radio" name="radio1" value="10"></label>
+      </li>
+      <li>
+        <label style="margin-right: 1.5rem;">1<input type="radio" name="radio2" value="1"></label>
+        <label style="margin-right: 1.5rem;">2<input type="radio" name="radio2" value="2"></label>
+        <label style="margin-right: 1.5rem;">3<input type="radio" name="radio2" value="3"></label>
+        <label style="margin-right: 1.5rem;">4<input type="radio" name="radio2" value="4"></label>
+        <label style="margin-right: 1.5rem;">5<input type="radio" name="radio2" value="5"></label>
+        <label style="margin-right: 1.5rem;">6<input type="radio" name="radio2" value="6"></label>
+        <label style="margin-right: 1.5rem;">7<input type="radio" name="radio2" value="7"></label>
+        <label style="margin-right: 1.5rem;">8<input type="radio" name="radio2" value="8"></label>
+        <label style="margin-right: 1.5rem;">9<input type="radio" name="radio2" value="9"></label>
+        <label style="margin-right: 1.5rem;">10<input type="radio" name="radio2" value="10"></label>
+      </li>
+      <li>
+        <label style="margin-right: 1.5rem;">1<input type="radio" name="radio3" value="1"></label>
+        <label style="margin-right: 1.5rem;">2<input type="radio" name="radio3" value="2"></label>
+        <label style="margin-right: 1.5rem;">3<input type="radio" name="radio3" value="3"></label>
+        <label style="margin-right: 1.5rem;">4<input type="radio" name="radio3" value="4"></label>
+        <label style="margin-right: 1.5rem;">5<input type="radio" name="radio3" value="5"></label>
+        <label style="margin-right: 1.5rem;">6<input type="radio" name="radio3" value="6"></label>
+        <label style="margin-right: 1.5rem;">7<input type="radio" name="radio3" value="7"></label>
+        <label style="margin-right: 1.5rem;">8<input type="radio" name="radio3" value="8"></label>
+        <label style="margin-right: 1.5rem;">9<input type="radio" name="radio3" value="9"></label>
+        <label style="margin-right: 1.5rem;">10<input type="radio" name="radio3" value="10"></label>
+      </li>
+  <li>
+        <label style="margin-right: 1.5rem;">1<input type="radio" name="radio4" value="1"></label>
+        <label style="margin-right: 1.5rem;">2<input type="radio" name="radio4" value="2"></label>
+        <label style="margin-right: 1.5rem;">3<input type="radio" name="radio4" value="3"></label>
+        <label style="margin-right: 1.5rem;">4<input type="radio" name="radio4" value="4"></label>
+        <label style="margin-right: 1.5rem;">5<input type="radio" name="radio4" value="5"></label>
+        <label style="margin-right: 1.5rem;">6<input type="radio" name="radio4" value="6"></label>
+        <label style="margin-right: 1.5rem;">7<input type="radio" name="radio4" value="7"></label>
+        <label style="margin-right: 1.5rem;">8<input type="radio" name="radio4" value="8"></label>
+        <label style="margin-right: 1.5rem;">9<input type="radio" name="radio4" value="9"></label>
+        <label style="margin-right: 1.5rem;">10<input type="radio" name="radio4" value="10"></label>
+      </li>
+      <li>
+        <button id="resBtn">출력</button>
+      </li>
+    </ul>
+  </body>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script>
+    $("#resBtn").click(function(){
+      let numArr = []
+
+      for(let i = 0; i < 4; i++){
+        numArr[i] = Number($(`input[name='radio${i+1}']:checked`).val());
+      }
+
+      // 내림차순 정렬
+      numArr = numArr.sort((a, b) => b - a)
+
+      console.log("선택된 값 중 가장 큰 값을 가장 작은수로 제곱한 결과를 console에 출력합니다.")
+      console.log(numArr[0]** numArr[3])
+    });
+  </script>
+</html>

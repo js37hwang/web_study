@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>mid3</title>
+  </head>
+  <body>
+    <div>
+      <input id="userHeight" type="text" placeholder="키(cm)를 입력해주세요.">
+      <input id="userWeight" type="text" placeholder="체중(kg)를 입력해주세요.">
+      <button id="bmiBtn">BMI 계산</button>
+    </div>
+    <div id="bmiArea">
+
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script>
+    $("#bmiBtn").click(function(e){
+            $.ajax({
+                url: `http://localhost/calcbmi`, 
+                data: {
+                    height: $("#userHeight").val(),
+                    weight: $("#userWeight").val()
+                },
+                success: function(res){
+                    $('#bmiArea').html(`<p>사용자의 BMI는 ${res.bmi}이며 이는 ${res.bmiStr}에 해당합니다.</p>`);
+                }
+            })
+        });
+  </script>
+</html>
