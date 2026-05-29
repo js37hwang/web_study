@@ -25,7 +25,8 @@
       }
 
       $.ajax({
-                url: `http://localhost/writeNews`, 
+                url: `/writeNews`, 
+                type : "POST",
                 data: {
                     title: $("#nTitle").val(),
                     content: $("#nContent").val()

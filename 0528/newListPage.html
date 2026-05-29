@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>테이블에 저장된 기사 타이틀 가져오기</title>
+  </head>
+  <body>
+    <div id="newTitleArea"></div>
+  </body>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script>
+    getNewsTitles();
+
+    async function getNewsTitles(){
+      try{
+        $.ajax({
+          url : '/getTitles',
+          type : 'POST',
+          success : function(res){
+            console.log("res : ", res)
+            $('#newTitleArea').append(`<p>등록 성공! 미리보기 </p>`)
+            for(let i = 0; i < res.length; i++){
+              $('#newTitleArea').append(`<p onclick='moveToDetailPage(${res[i].id})'>title: ${res[i].title}</p>`);
+              console.log(res);
+            }          
+          }
+        })
+      }catch(error){console.error(error)}
+    }
+
+    function moveToDetailPage(id){
+      location.href = `/newDetailPage?${id}`;
+    }
+  </script>
+</html>
