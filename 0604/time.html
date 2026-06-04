@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <title>timer</title>
+  </head>
+  <body>
+    <section>
+      <article>
+        <input type="text" id="multiplierInput"> 
+        <button type="button" onclick="increaseMultiplier()">배수증가</button>
+        <button type="button" onclick="startTimer()">타이머 시작</button>
+        <button type="button" onclick="clearTimer()">타이머 종료</button>
+        <span id="timerArea"></span>
+      </article>
+      <article id="numArea" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 4px;">
+
+      </article>
+    </section>
+  </body>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script>
+    setTimeout(function(){console.log('1234')}, 1000);
+    
+    // setInterval 사용 시 반드시 변수에 담아 사용할 것
+    let sec3Interval = setInterval(function(){
+      console.log("1초마다 실행")
+    }, 1000)
+
+    setTimeout(function(){
+      clearInterval(sec3Interval);
+    }, 5000);
+
+
+    let increaseVar = null;
+    let timerVar = null;
+    let secNum = 3000;
+
+
+    function increaseMultiplier(){
+      if(!Number($('#multiplierInput').val())){
+        alert("0 이외의 숫자를 입력해야만 진행됩니다.");
+        return;
+      }
+      if(increaseVar !== null){
+        return;
+      }
+      try{
+
+        let cnt = 1;
+        increaseVar = setInterval(function(){
+          $('#numArea').append(`${Number($('#multiplierInput').val()) * cnt}<br/>`);
+          cnt++;
+        }, secNum)
+      }catch(error){console.error(error)}
+    }
+
+    function startTimer(){
+      if(timerVar !== null){
+        alert("이미 타이머가 실행중입니다.")
+        return;
+      }
+
+      let cnt = 1;
+      setTimeout(function(){
+        timerVar = setInterval(function(){
+          $('#timerArea').html(cnt);
+          cnt++;
+        }, 1000)
+      }, secNum)
+      
+    }
+
+    function clearTimer(){
+      setTimeout(function(){
+        clearInterval(timerVar);
+        timerVar = null;
+      }, secNum)
+    }
+  </script>
+</html>

@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>기사 더 알아보기</title>
+  </head>
+  <body>
+    <p><b>기사 더 알아보기</b></p> <br/> <br/>
+    제목
+    <div  id="titleArea_d"></div>
+    <br/>
+    내용
+    <div  id="contentArea_d"></div>
+    <br/>
+    <input type="button" onclick="moveToPage('edit')" value="수정">
+    <input type="button" onclick="moveToPage('main')" value="목록으로">
+  </body>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script>
+
+    $.ajax({
+      url :`/getSingleNewsById?id=${location.href.split("?")[1]}`,
+      success : function(res){
+        $("#titleArea_d").html(res[0].title);
+        $("#contentArea_d").html(res[0].content);
+      }
+    })
+
+    function moveToPage(type){
+      switch(type){
+        case 'main':
+          location.href = `/newsListPage`;
+          return;
+        case 'edit':
+          location.href = `/newsEditPage?${location.href.split('?')[1]}`;
+          return;
+      }
+    }
+  </script>
+</html>

@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <title>chart</title>
+  </head>
+  <body>
+    <div id="chart_div"></div>
+  </body>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script>
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawCurveTypes);
+
+    let intervalVar = null;
+
+
+    function setOptions({hAxisViewMax, vAxisViewMax}){
+      return {
+        hAxis: { //x축 horizen
+          title: 'Time',
+          viewWindow:{
+            min : 0,
+            max: hAxisViewMax
+          }
+        },
+        vAxis: { //y축 vertical
+          title: 'Popularity',
+          viewWindow:{
+            min : 0,
+            max: vAxisViewMax
+          }
+        },
+        series: {
+          1: {curveType: 'function'}
+        }
+      }
+    }
+    
+
+    function addRowsFunc(cnt){
+      let dogsData = Math.floor(Math.random() * 11);
+      let catsData = Math.floor(Math.random() * 11);
+      let cowsData = Math.floor(Math.random() * 11);
+
+      console.log(`cnt : ${cnt}, dogsData : ${dogsData}, catsData : ${catsData}, cowsData : ${cowsData}`)
+
+      return {addrows : [cnt, dogsData, catsData, cowsData], cnt : cnt++};
+    }
+
+    function resetRowsFunc(loopCnt){
+      let addRowList = [];
+
+      for(let i = 0; i <= loopCnt; i++){
+        addRowList.push([i, Math.floor(Math.random() * 11), Math.floor(Math.random() * 11), Math.floor(Math.random() * 11)])
+      }
+      return addRowList;
+    }
+
+    function drawCurveTypes() {
+      var data = new google.visualization.DataTable();
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      
+      data.addColumn('number', 'X');
+      data.addColumn('number', 'Dogs');
+      data.addColumn('number', 'Cats');
+      data.addColumn('number', 'Cows');
+
+      data.addRows([[0,0,0,0]])
+
+      
+      const options = setOptions({
+        hAxisViewMax : 10, 
+        vAxisViewMax : 12
+      })
+
+       // let cntNum = 0;
+      intervalVal = setInterval(function(){
+        data.removeRows(0, data.getNumberOfRows());
+
+        data.addRows(resetRowsFunc(10));
+        chart.draw(data, options);
+
+      //   let {addrows, cnt} = addRowsFunc(cntNum);
+
+      //   chart.draw(addrows, options);
+
+      //   if(cnt === 50){
+      //     clearInterval(intervalVal);
+      //     intervalVal = null;
+      //   }
+      //   cntNum = cnt;
+
+      }, 1000)
+    }
+  </script>
+</html>

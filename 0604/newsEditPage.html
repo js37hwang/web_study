@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>기사 수정하기</title>
+  </head>
+  <body>
+    <p><b>기사 수정하기</b></p> <br/> <br/>
+    제목
+    <input id="titleArea_e" style="width: 755px" />
+    <br/>
+    내용
+    <textarea id="contentArea_e" style="width: 755px; height : 500px"></textarea>
+    <br/>
+    <input type="button" id="editNewsBtn" value="수정">
+    <input type="button" id="goToNewsListBtn" value="목록으로">
+  </body>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script>
+
+    console.log(location.href.split("?")[1])
+    
+    $.ajax({
+      url :`/getSingleNewsById?id=${location.href.split("?")[1]}`,
+      success : function(res){
+        $("#titleArea_e").val(res[0].title);
+        $("#contentArea_e").val(res[0].content);
+      }
+    })
+
+    $("#goToNewsListBtn").click(function (){
+      location.href = "/newsListPage";
+    })
+
+    $("#editNewsBtn").click(function (){
+      $.ajax({
+      url :`/editNews`,
+      type : "POST",
+      data: {
+        id : location.href.split("?")[1], 
+          title: $("#titleArea_e").val(),
+          content: $("#contentArea_e").val()
+      },
+      success : function(res){
+        alert("기사 수정에 성공했습니다!")
+      }
+    })
+
+    })
+  </script>
+</html>

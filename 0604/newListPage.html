@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <title>테이블에 저장된 기사 타이틀 가져오기</title>
+  </head>
+  <body>
+    <h3>뉴스 목록</h3> <button onclick="location.href='/newsWritePage'">기사 작성</button>
+    <div id="newTitleArea">
+    </div>
+    
+  </body>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script>
+    getNewsTitles();
+
+    async function getNewsTitles(){
+      try{
+        $.ajax({
+          url : '/getTitles',
+          type : 'POST',
+          success : function(res){
+
+            let htmlStr = '';
+
+            for(let i = 0; i < res.length; i++){
+              htmlStr += `<p>title: ${res[i].title} 
+                              <button type='button' onclick='moveToPage("Detail",${res[i].id})'>상세보기</button>
+                              <button type='button' onclick='moveToPage("Edit", ${res[i].id})'>수정하기</button>
+                              <button type='button' onclick='delNews(${res[i].id})'>삭제하기</button>
+                            </p>`
+              console.log(res[i]);
+            }
+            $('#newTitleArea').html(htmlStr);          
+          }
+        })
+      }catch(error){console.error(error)}
+    }
+
+    function moveToPage(type, id){
+      location.href = `/news${type}Page?${id}`;
+    }
+
+    function delNews(id){
+      try{
+        if(!confirm("해당 기사를 정말 삭제하시겠습니까?")){
+          return;
+        }
+
+        $.ajax({
+          url : '/delNews', 
+          type : "POST", 
+          data : {id : id},
+          success : function (res){
+            if(res === 'success'){
+              getNewsTitles();
+              alert("기사 삭제에 성공했습니다.")
+
+            }else{
+              alert("기사 삭제에 실패했습니다.")
+            }
+          }
+        })
+      }catch(error){console.error(error)}
+    }
+  </script>
+</html>

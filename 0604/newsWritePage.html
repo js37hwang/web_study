@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>뉴스 작성</title>
+  </head>
+  <body>
+    <section>
+      <div style="margin-bottom : 1rem;">
+        <input id="nTitle" type="text" placeholder="뉴스 기사 타이틀 작성" style="width: 755px"> 
+        <button id="insertBtn">등록</button>
+      </div>
+      <div>
+        <textarea id="nContent" placeholder="뉴스 기사 내용 입력"  style="width: 800px; height : 500px" ></textarea>
+      </div>
+    </section>
+    <section id="returnArea"></section>
+  </body>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script>
+    $('#insertBtn').click(function(e){
+      console.log("진입")
+
+      if($("#nTitle").val() === '' || $("#nContent").val() === ''){
+        alert("기사의 타이틀 또는 내용을 반드시 입력해야 합니다.");
+        return;
+      }
+
+      $.ajax({
+                url: `/writeNews`, 
+                type : "POST",
+                data: {
+                    title: $("#nTitle").val(),
+                    content: $("#nContent").val()
+                },
+                success: function(res){
+                    $('#returnArea').html(`<p>등록 성공! 미리보기 </p><p>id: ${res.id}</p><p>title: ${res.title}</p><p>content: ${res.content}</p>`);
+                    console.log(res);
+                }
+            })
+    })
+  </script>
+</html>
