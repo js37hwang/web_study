@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>네이버 주식 차트</title>
+  </head>
+  <body>
+    <div>삼성전자 주가</div>
+    <span id="chart_div"></span> <span id="chart_cnt"></span>
+  </body>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script>
+    let cnt = 1;
+    let chartInterval = setInterval(function() {
+      $.ajax({
+        url: "/getNaverStockChart",
+        success: function(res) {
+          console.log( res.areas[0].datas[0]);
+
+          $("#chart_div").text( res.areas[0].datas[0].nv);
+          $("#chart_cnt").text( cnt);
+          cnt++;
+        }
+      });
+    }, 1000)
+    
+  </script>
+</html>

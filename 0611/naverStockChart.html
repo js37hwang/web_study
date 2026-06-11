@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <title>실시간 삼성 주가(네이버 주식 차트)</title>
+  </head>
+  <body>
+    <section>
+      <h1>삼성전자 실시간 주가 차트</h1>
+      <article id="stockChart"></article>
+    </section>
+  </body>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script>
+    google.charts.load('current', {packages: ['corechart', 'line']});
+
+    // 0. 1초마다 호출
+    setInterval(function(){
+      google.charts.setOnLoadCallback(drawCurveTypes);
+    }, 1000)
+    
+    // 1. 데이터 가져오기
+    async function getStockData() {
+      try {
+        const res = await $.ajax({
+          url: '/getChartDatas',
+          type: "POST"
+        });
+        
+        return res; 
+      } catch (error) {
+        console.error("데이터 로드 실패:", error);
+      }
+    }
+
+    // 2. 데이터 가공하기
+    function makeRows(rows){
+      let arr = [];
+
+      for(let i = 0; i  < rows.length; i++){
+
+        const date = new Date(rows[i].api_called_at)
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+
+
+        arr.push([`${hours}:${minutes}:${seconds}`, Number(rows[i].nv)])
+      }
+      return arr;
+    }
+
+    // 3. 데이터 화면에 차트 그리기
+    async function drawCurveTypes() {
+      try{
+        var data = new google.visualization.DataTable();
+        var chart = new google.visualization.LineChart(document.getElementById('stockChart'));
+
+        let rows = await getStockData();
+        let customRows = await makeRows(rows);
+
+        data.addColumn('string', 'Time');
+        data.addColumn('number', '삼성전자'); // 무조건 숫자만 들어갈 수 있음
+
+        data.addRows(customRows)
+        chart.draw(data, {
+          hAxis: { //x축 horizen
+            title: 'Time',
+          },
+          vAxis: { //y축 vertical
+            title: 'price',
+          },
+          series: {
+            1: {curveType: 'function'}
+          }
+        }); 
+      }catch(error){
+        console.error(error)
+      }
+    }
+
+  </script>
+</html>
